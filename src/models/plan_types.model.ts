@@ -8,6 +8,9 @@ export const PlanTypeSchema = sequelize.define('plan_types', {
     allowNull: false,
     primaryKey: true,
   },
+  name: {
+    type: DataTypes.STRING,
+  },
   status: {
     type: DataTypes.STRING,
     defaultValue: 'active',
