@@ -2,7 +2,7 @@ import {app} from './app';
 import sequelize from './config/sequelize';
 
 sequelize
-  .sync({force:true})
+  .authenticate()
   .then(() => {
     console.info('DB_CONNECTED', 'SUCCESS');
   })
