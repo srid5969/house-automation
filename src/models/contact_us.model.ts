@@ -1,7 +1,7 @@
 import {DataTypes} from 'sequelize';
 import sequelize from './../config/sequelize';
 
-export const ContactUsSchema = sequelize.define('house_types', {
+export const ContactUsSchema = sequelize.define('contact', {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
