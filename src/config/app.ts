@@ -17,3 +17,4 @@ export const dbConfig: Options = {
   dialect: 'mysql',
 };
 export const sendGridAPIkey = process.env.SENDGRID_API_KEY || '';
+export const jwtSecret = process.env.JWT_SECRET || '';

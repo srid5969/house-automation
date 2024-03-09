@@ -1,8 +1,8 @@
-import { Request, Response } from 'express';
-import { AppError } from '../../util/app-error';
-import { HouseTypeRepository } from './../../repositories/houseTypes.repository';
-import { InternalErrorResponse, SuccessResponse } from './../../util/apiResponse';
-import { ResponseMsg } from './../../util/enum';
+import {Request, Response} from 'express';
+import {AppError} from '../../util/app-error';
+import {HouseTypeRepository} from './../../repositories/houseTypes.repository';
+import {InternalErrorResponse, SuccessResponse} from './../../util/apiResponse';
+import {ResponseMsg} from './../../util/enum';
 
 export class HouseTypeController {
   private static service = new HouseTypeRepository();

@@ -1,8 +1,8 @@
-import { Request, Response } from 'express';
-import { InternalErrorResponse, SuccessResponse } from '../../util/apiResponse';
-import { AppError } from '../../util/app-error';
-import { ResponseMsg } from '../../util/enum';
-import { NotificationsRepository } from './../../repositories/notifications.repository';
+import {Request, Response} from 'express';
+import {InternalErrorResponse, SuccessResponse} from '../../util/apiResponse';
+import {AppError} from '../../util/app-error';
+import {ResponseMsg} from '../../util/enum';
+import {NotificationsRepository} from './../../repositories/notifications.repository';
 
 export class NotificationsController {
   private static service = new NotificationsRepository();

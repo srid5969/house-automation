@@ -1,8 +1,8 @@
-import { Request, Response } from 'express';
-import { AppError } from '../../util/app-error';
-import { PlanMappingRepository } from './../../repositories/planMapping.repository';
-import { InternalErrorResponse, SuccessResponse } from './../../util/apiResponse';
-import { ResponseMsg } from './../../util/enum';
+import {Request, Response} from 'express';
+import {AppError} from '../../util/app-error';
+import {PlanMappingRepository} from './../../repositories/planMapping.repository';
+import {InternalErrorResponse, SuccessResponse} from './../../util/apiResponse';
+import {ResponseMsg} from './../../util/enum';
 
 export class PlanController {
   private static service = new PlanMappingRepository();
@@ -26,10 +26,7 @@ export class PlanController {
   }
   static async updateById(req: Request, res: Response) {
     try {
-      const data = await PlanController.service.update(
-        req.params.id,
-        req.body
-      );
+      const data = await PlanController.service.update(req.params.id, req.body);
       new SuccessResponse(res, ResponseMsg.SUCCESS, data).send();
     } catch (error) {
       if (error instanceof AppError) return AppError.handle(error, res);

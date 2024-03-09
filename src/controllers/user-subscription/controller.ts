@@ -17,7 +17,9 @@ export class UserSubscriptionController {
   }
   static async getById(req: Request, res: Response) {
     try {
-      const data = await UserSubscriptionController.service.getById(req.params.id);
+      const data = await UserSubscriptionController.service.getById(
+        req.params.id
+      );
       new SuccessResponse(res, ResponseMsg.SUCCESS, data).send();
     } catch (error) {
       if (error instanceof AppError) return AppError.handle(error, res);
@@ -39,7 +41,9 @@ export class UserSubscriptionController {
 
   static async deleteById(req: Request, res: Response) {
     try {
-      const data = await UserSubscriptionController.service.delete(req.params.id);
+      const data = await UserSubscriptionController.service.delete(
+        req.params.id
+      );
       new SuccessResponse(res, ResponseMsg.SUCCESS, data).send();
     } catch (error) {
       if (error instanceof AppError) return AppError.handle(error, res);

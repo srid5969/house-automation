@@ -1,5 +1,5 @@
-import { AppError, InternalError } from '../util/app-error';
-import { UserSubscriptionSchema } from './../models/user_subscriptions.model';
+import {AppError, InternalError} from '../util/app-error';
+import {UserSubscriptionSchema} from './../models/user_subscriptions.model';
 
 export class UsersSubscriptionRepository {
   public async create(createObj: any) {

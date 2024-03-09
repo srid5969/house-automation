@@ -4,11 +4,11 @@ import {AreaTypeRouter} from './controllers/automationAreaType';
 import {HouseTypeRouter} from './controllers/houseType';
 import {PlanTypeRouter} from './controllers/planType';
 import {PlanRouter} from './controllers/plan';
-import { NotificationRouter } from './controllers/notifications';
-import { UsersRouter } from './controllers/user';
-import { UserSubscriptionRouter } from './controllers/user-subscription';
-import { ContactUsRouter } from './controllers/constactUs';
-import { UserReviewsRouter } from './controllers/user-reviews';
+import {NotificationRouter} from './controllers/notifications';
+import {UsersRouter} from './controllers/user';
+import {UserSubscriptionRouter} from './controllers/user-subscription';
+import {ContactUsRouter} from './controllers/constactUs';
+import {UserReviewsRouter} from './controllers/user-reviews';
 
 export const AppRouter = express.Router();
 

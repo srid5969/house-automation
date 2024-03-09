@@ -1,5 +1,5 @@
-import { AppError, InternalError } from '../util/app-error';
-import { UserReviewsSchema } from './../models/user_reviews.model';
+import {AppError, InternalError} from '../util/app-error';
+import {UserReviewsSchema} from './../models/user_reviews.model';
 
 export class UserReviewsRepository {
   public async create(createObj: any) {

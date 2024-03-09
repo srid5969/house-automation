@@ -1,8 +1,8 @@
-import { Request, Response } from 'express';
-import { InternalErrorResponse, SuccessResponse } from '../../util/apiResponse';
-import { AppError } from '../../util/app-error';
-import { ResponseMsg } from '../../util/enum';
-import { UsersRepository } from './../../repositories/user.repository';
+import {Request, Response} from 'express';
+import {InternalErrorResponse, SuccessResponse} from '../../util/apiResponse';
+import {AppError} from '../../util/app-error';
+import {ResponseMsg} from '../../util/enum';
+import {UsersRepository} from './../../repositories/user.repository';
 
 export class UserController {
   private static service = new UsersRepository();
@@ -26,10 +26,7 @@ export class UserController {
   }
   static async updateById(req: Request, res: Response) {
     try {
-      const data = await UserController.service.update(
-        req.params.id,
-        req.body
-      );
+      const data = await UserController.service.update(req.params.id, req.body);
       new SuccessResponse(res, ResponseMsg.SUCCESS, data).send();
     } catch (error) {
       if (error instanceof AppError) return AppError.handle(error, res);

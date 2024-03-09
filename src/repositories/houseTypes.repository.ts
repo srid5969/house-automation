@@ -1,5 +1,5 @@
-import { HouseTypeSchema } from '../models/house_types.model';
-import { AppError, InternalError } from './../util/app-error';
+import {HouseTypeSchema} from '../models/house_types.model';
+import {AppError, InternalError} from './../util/app-error';
 
 export class HouseTypeRepository {
   public async create(createObj: any) {
