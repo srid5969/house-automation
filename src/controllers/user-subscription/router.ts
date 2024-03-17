@@ -1,7 +1,7 @@
 import {asyncWrapper} from '../../middleware/async-wrapper';
 import express from 'express';
 import {UserSubscriptionController} from './controller';
-import { handleUserSession } from '../../middleware';
+import {handleUserSession} from '../../middleware';
 
 export const UserSubscriptionRouter = express.Router();
 
@@ -12,12 +12,12 @@ UserSubscriptionRouter.get(
 UserSubscriptionRouter.patch(
   '/:id',
   handleUserSession(UserSubscriptionController.updateById),
-  asyncWrapper(UserSubscriptionController.updateById),
+  asyncWrapper(UserSubscriptionController.updateById)
 );
 UserSubscriptionRouter.delete(
   '/:id',
   handleUserSession(UserSubscriptionController.deleteById),
-  asyncWrapper(UserSubscriptionController.deleteById),
+  asyncWrapper(UserSubscriptionController.deleteById)
 );
 UserSubscriptionRouter.get(
   '/',
@@ -26,5 +26,5 @@ UserSubscriptionRouter.get(
 UserSubscriptionRouter.post(
   '/',
   handleUserSession(UserSubscriptionController.create),
-  asyncWrapper(UserSubscriptionController.create),
+  asyncWrapper(UserSubscriptionController.create)
 );

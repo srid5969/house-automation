@@ -3,6 +3,7 @@ import {InternalErrorResponse, SuccessResponse} from '../../util/apiResponse';
 import {AppError} from '../../util/app-error';
 import {ResponseMsg} from '../../util/enum';
 import {UsersRepository} from './../../repositories/user.repository';
+import {UsersSubscriptionRepository} from '../../repositories/user-subscription.repository';
 
 export class UserController {
   private static service = new UsersRepository();
@@ -46,6 +47,20 @@ export class UserController {
   static async create(req: Request, res: Response) {
     try {
       const data = await UserController.service.create(req.body);
+      new SuccessResponse(res, ResponseMsg.SUCCESS, data).send();
+    } catch (error) {
+      if (error instanceof AppError) return AppError.handle(error, res);
+      new InternalErrorResponse(res).send();
+    }
+  }
+  static async createUserAndSubscribeToPlan(req: Request, res: Response) {
+    try {
+      const data = await UserController.service.create(req.body);
+      await new UsersSubscriptionRepository().create({
+        plan: req.body.plan, //plan id
+        user: data.toJSON().id,
+        status: 'requested',
+      });
       new SuccessResponse(res, ResponseMsg.SUCCESS, data).send();
     } catch (error) {
       if (error instanceof AppError) return AppError.handle(error, res);
