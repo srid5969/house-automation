@@ -1,7 +1,7 @@
 import {Request, Response} from 'express';
 import {InternalErrorResponse, SuccessResponse} from '../../util/apiResponse';
 import {AppError} from '../../util/app-error';
-import {ResponseMsg} from '../../util/enum';
+import {ResponseMsg, USER_TYPE} from '../../util/enum';
 import {UsersRepository} from './../../repositories/user.repository';
 import {UsersSubscriptionRepository} from '../../repositories/user-subscription.repository';
 
@@ -55,13 +55,14 @@ export class UserController {
   }
   static async createUserAndSubscribeToPlan(req: Request, res: Response) {
     try {
+      req.body.user_type = USER_TYPE.CUSTOMER;
       const data = await UserController.service.create(req.body);
       await new UsersSubscriptionRepository().create({
         plan: req.body.plan, //plan id
         user: data.toJSON().id,
         status: 'requested',
       });
-      new SuccessResponse(res, ResponseMsg.SUCCESS, data).send();
+      new SuccessResponse(res, ResponseMsg.SUCCESS, null).send();
     } catch (error) {
       if (error instanceof AppError) return AppError.handle(error, res);
       new InternalErrorResponse(res).send();

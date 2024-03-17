@@ -5,7 +5,10 @@ import {handleUserSession} from '../../middleware';
 
 export const UsersRouter = express.Router();
 
-UsersRouter.post('/create&subscribe-plan', asyncWrapper(UserController.create));
+UsersRouter.post(
+  '/create&subscribe-plan',
+  asyncWrapper(UserController.createUserAndSubscribeToPlan)
+);
 UsersRouter.get(
   '/:id',
   handleUserSession(UserController.getById),
