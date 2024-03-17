@@ -1,14 +1,15 @@
 import express from 'express';
 import {ApiHealthCheckRouter} from './controllers/api-health-check';
+import {AuthRouter} from './controllers/auth';
 import {AreaTypeRouter} from './controllers/automationAreaType';
-import {HouseTypeRouter} from './controllers/houseType';
-import {PlanTypeRouter} from './controllers/planType';
-import {PlanRouter} from './controllers/plan';
-import {NotificationRouter} from './controllers/notifications';
-import {UsersRouter} from './controllers/user';
-import {UserSubscriptionRouter} from './controllers/user-subscription';
 import {ContactUsRouter} from './controllers/constactUs';
+import {HouseTypeRouter} from './controllers/houseType';
+import {NotificationRouter} from './controllers/notifications';
+import {PlanRouter} from './controllers/plan';
+import {PlanTypeRouter} from './controllers/planType';
+import {UsersRouter} from './controllers/user';
 import {UserReviewsRouter} from './controllers/user-reviews';
+import {UserSubscriptionRouter} from './controllers/user-subscription';
 
 export const AppRouter = express.Router();
 
@@ -25,3 +26,4 @@ AppRouter.use('/users', UsersRouter);
 AppRouter.use('/user-subscriptions', UserSubscriptionRouter);
 AppRouter.use('/contact-us', ContactUsRouter);
 AppRouter.use('/reviews', UserReviewsRouter);
+AppRouter.use('/auth', AuthRouter);

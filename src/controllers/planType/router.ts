@@ -1,11 +1,24 @@
 import {asyncWrapper} from './../../middleware/async-wrapper';
 import express from 'express';
 import {PlanTypeController} from './controller';
+import {handleUserSession} from '../../middleware';
 
 export const PlanTypeRouter = express.Router();
 
 PlanTypeRouter.get('/:id', asyncWrapper(PlanTypeController.getById));
-PlanTypeRouter.patch('/:id', asyncWrapper(PlanTypeController.updateById));
-PlanTypeRouter.delete('/:id', asyncWrapper(PlanTypeController.deleteById));
 PlanTypeRouter.get('/', asyncWrapper(PlanTypeController.getAll));
-PlanTypeRouter.post('/', asyncWrapper(PlanTypeController.create));
+PlanTypeRouter.patch(
+  '/:id',
+  handleUserSession(PlanTypeController.updateById),
+  asyncWrapper(PlanTypeController.updateById)
+);
+PlanTypeRouter.delete(
+  '/:id',
+  handleUserSession(PlanTypeController.deleteById),
+  asyncWrapper(PlanTypeController.deleteById)
+);
+PlanTypeRouter.post(
+  '/',
+  handleUserSession(PlanTypeController.create),
+  asyncWrapper(PlanTypeController.create)
+);
